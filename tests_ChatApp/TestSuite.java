@@ -32,6 +32,22 @@ public class TestSuite {
 		Server server = new Team3ChatApp.Server(8765);
 		Client client = new Team3ChatApp.Client("127.0.0.1", 8765);
 		
-		assertEquals(client.isAlive(), true);
+		assertEquals(true, client.isAlive());
+		
+		server = null;
+		client = null;
 	}
+	
+	@Test
+	public void ClientConnectionFalseTest() {
+		Server server = new Team3ChatApp.Server(9182);
+		Client client = new Team3ChatApp.Client("127.0.0.1", 3211);
+		
+		assertEquals(client.isAlive(), false);
+		
+	}
+	
+	
+	
+	
 }

@@ -12,6 +12,7 @@ public class Client {
 	private String host;
 	private int port;
 	private String nickname;
+	private Boolean isAlive = false;
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		new Client("127.0.0.1", 1234).run();
@@ -25,7 +26,7 @@ public class Client {
 	public void run() throws UnknownHostException, IOException {
 		Socket client = new Socket(host, port);
 		System.out.println("Connected!");
-
+		
 		new Thread(new ReceivedMessagesHandler(client.getInputStream())).start();
 
 		Scanner sc = new Scanner(System.in);
@@ -38,13 +39,16 @@ public class Client {
 			output.println(nickname + ": " + sc.nextLine());
 		}
 		
+		isAlive = true;
+		
 		output.close();
 		sc.close();
 		client.close();
 	}
 	
+	
 	public Boolean isAlive() {
-		return true;
+		return isAlive;
 	}
 	
 }
