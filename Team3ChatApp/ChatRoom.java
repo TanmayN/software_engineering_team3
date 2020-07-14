@@ -1,14 +1,16 @@
+package Team3ChatApp;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 
-public class DirectMessage extends JFrame {
+public class ChatRoom extends JFrame {
 
 	private JPanel contentPane;
 
@@ -19,7 +21,7 @@ public class DirectMessage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DirectMessage frame = new DirectMessage();
+					ChatRoom frame = new ChatRoom();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +33,7 @@ public class DirectMessage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DirectMessage() {
+	public ChatRoom() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -39,25 +41,37 @@ public class DirectMessage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea chatTextArea = new JTextArea();
-		chatTextArea.setBounds(19, 30, 396, 150);
-		contentPane.add(chatTextArea);
-		
 		JLabel lblChats = new JLabel("Chats");
-		lblChats.setBounds(157, 6, 61, 16);
+		lblChats.setBounds(88, 6, 61, 16);
 		contentPane.add(lblChats);
 		
+		JTextArea chatsTextArea = new JTextArea();
+		chatsTextArea.setBounds(17, 29, 248, 144);
+		contentPane.add(chatsTextArea);
+		
+		JTextArea membersTextArea = new JTextArea();
+		membersTextArea.setBounds(277, 29, 67, 144);
+		contentPane.add(membersTextArea);
+		
+		JLabel lblMembers = new JLabel("Members");
+		lblMembers.setBounds(277, 6, 61, 16);
+		contentPane.add(lblMembers);
+		
 		JTextArea messageTextArea = new JTextArea();
-		messageTextArea.setBounds(19, 192, 325, 40);
+		messageTextArea.setBounds(18, 193, 248, 45);
 		contentPane.add(messageTextArea);
 		
 		JLabel lblMessage = new JLabel("Message");
-		lblMessage.setBounds(145, 244, 61, 16);
+		lblMessage.setBounds(110, 250, 61, 16);
 		contentPane.add(lblMessage);
 		
 		JButton btnSend = new JButton("Send");
-		btnSend.setBounds(356, 192, 74, 40);
+		btnSend.setBounds(275, 209, 97, 29);
 		contentPane.add(btnSend);
+		
+		JButton btnDirectMessage = new JButton("DM");
+		btnDirectMessage.setBounds(356, 72, 86, 21);
+		contentPane.add(btnDirectMessage);
 	}
 
 }

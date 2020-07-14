@@ -1,4 +1,4 @@
-package sockets;
+package Team3ChatApp;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,19 +23,15 @@ public class Client {
 	}
 
 	public void run() throws UnknownHostException, IOException {
-		// connect client to server
 		Socket client = new Socket(host, port);
 		System.out.println("Client successfully connected to server!");
 
-		// create a new thread for server messages handling
 		new Thread(new ReceivedMessagesHandler(client.getInputStream())).start();
 
-		// ask for a nickname
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter a nickname: ");
 		nickname = sc.nextLine();
 
-		// read messages from keyboard and send to server
 		System.out.println("Send messages: ");
 		PrintStream output = new PrintStream(client.getOutputStream());
 		while (sc.hasNextLine()) {
@@ -58,7 +54,6 @@ class ReceivedMessagesHandler implements Runnable {
 
 	@Override
 	public void run() {
-		// receive server messages and print out to screen
 		Scanner s = new Scanner(server);
 		while (s.hasNextLine()) {
 			System.out.println(s.nextLine());
