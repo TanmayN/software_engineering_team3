@@ -24,15 +24,15 @@ public class Client {
 
 	public void run() throws UnknownHostException, IOException {
 		Socket client = new Socket(host, port);
-		System.out.println("Client successfully connected to server!");
+		System.out.println("Connected!");
 
 		new Thread(new ReceivedMessagesHandler(client.getInputStream())).start();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter a nickname: ");
+		System.out.print("Nickname: ");
 		nickname = sc.nextLine();
 
-		System.out.println("Send messages: ");
+		System.out.println("Text: ");
 		PrintStream output = new PrintStream(client.getOutputStream());
 		while (sc.hasNextLine()) {
 			output.println(nickname + ": " + sc.nextLine());
@@ -42,6 +42,11 @@ public class Client {
 		sc.close();
 		client.close();
 	}
+	
+	public Boolean isAlive() {
+		return true;
+	}
+	
 }
 
 class ReceivedMessagesHandler implements Runnable {

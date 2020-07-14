@@ -30,7 +30,7 @@ public class Server {
 				this.close();
 			}
 		};
-		System.out.println("Listening on port 1234");
+		System.out.println("Listening on port " + Integer.toString(port));
 
 		while (true) {
 			Socket client = server.accept();
