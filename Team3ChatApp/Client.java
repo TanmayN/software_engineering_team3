@@ -65,6 +65,7 @@ class ReceivedMessagesHandler implements Runnable {
 	public void run() {
 		Scanner s = new Scanner(server);
 		while (s.hasNextLine()) {
+			
 			System.out.println(s.nextLine());
 		}
 		s.close();

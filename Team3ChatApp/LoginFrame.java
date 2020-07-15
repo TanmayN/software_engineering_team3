@@ -17,6 +17,10 @@ public class LoginFrame extends JFrame {
 	private JTextField userNameTextField;
 	private JTextField passwordTextField;
 
+	public JTextField getUsername() {
+		return userNameTextField;
+	}
+	
 	/**
 	 * Launch the application.
 	 */

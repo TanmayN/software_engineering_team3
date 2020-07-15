@@ -16,7 +16,7 @@ public class Server {
 	private ServerSocket server;
 
 	public static void main(String[] args) throws IOException {
-		new Server(1234).run();
+		new Server(8765).run();
 	}
 
 	public Server(int port) {

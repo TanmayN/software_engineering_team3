@@ -11,3 +11,5 @@
 /Server.class
 /Client.class
 /ReceivedMessagesHandler.class
+/ChatRoom$2.class
+/ChatRoomReceivedMessagesHandler.class
