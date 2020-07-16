@@ -64,12 +64,16 @@ public class ChatRoom extends JFrame {
 		contentPane.add(lblMessage);
 		
 		JButton btnSend = new JButton("Send");
-		btnSend.setBounds(275, 209, 97, 29);
+		btnSend.setBounds(265, 193, 97, 29);
 		contentPane.add(btnSend);
 		
 		JButton btnDirectMessage = new JButton("DM");
 		btnDirectMessage.setBounds(356, 72, 86, 21);
 		contentPane.add(btnDirectMessage);
+		
+		JButton btnLeaveRoom = new JButton("Leave Room");
+		btnLeaveRoom.setBounds(325, 245, 117, 29);
+		contentPane.add(btnLeaveRoom);
 	}
 
 }
