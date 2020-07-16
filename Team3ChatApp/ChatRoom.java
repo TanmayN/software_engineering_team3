@@ -22,11 +22,16 @@ public class ChatRoom extends JFrame {
 	private JPanel contentPane;
 	private Socket client = null;
 	private InputStream server = null;
+	
+	private static String username;
+	private static String password;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		username = args[0];
+		password = args[1];
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -94,7 +99,7 @@ public class ChatRoom extends JFrame {
 				PrintStream output = null;
 				try {
 					output = new PrintStream(client.getOutputStream());
-					output.println("Placeholder nickname: " + messageTextArea.getText());
+					output.println(username + ": " + messageTextArea.getText());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -152,7 +157,7 @@ class ChatRoomReceivedMessagesHandler implements Runnable {
 	public void run() {
 		Scanner s = new Scanner(server);
 		while (s.hasNextLine()) {
-			textArea.append(s.nextLine());
+			textArea.append(s.nextLine() + "\n");
 		}
 		s.close();
 	}
