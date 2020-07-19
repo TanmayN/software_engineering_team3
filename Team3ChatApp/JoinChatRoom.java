@@ -11,6 +11,9 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 public class JoinChatRoom extends JFrame {
+	
+	private static String username;
+	private static String password;
 
 	private JPanel contentPane;
 
@@ -18,6 +21,8 @@ public class JoinChatRoom extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		username = args[0];
+		password = args[1];
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

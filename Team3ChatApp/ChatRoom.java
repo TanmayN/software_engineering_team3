@@ -25,6 +25,7 @@ public class ChatRoom extends JFrame {
 	
 	private static String username;
 	private static String password;
+	private static String port;
 
 	/**
 	 * Launch the application.
@@ -32,6 +33,7 @@ public class ChatRoom extends JFrame {
 	public static void main(String[] args) {
 		username = args[0];
 		password = args[1];
+		port = args[2];
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -50,7 +52,7 @@ public class ChatRoom extends JFrame {
 	public ChatRoom() {
 		
 		try {
-			client = new Socket("127.0.0.1", 8765);
+			client = new Socket("127.0.0.1", Integer.valueOf(port));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

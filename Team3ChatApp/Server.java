@@ -11,12 +11,13 @@ import java.util.Scanner;
 
 public class Server {
 
-	private int port;
+	private static int port;
 	public List<PrintStream> clients;
 	private ServerSocket server;
 
 	public static void main(String[] args) throws IOException {
-		new Server(8765).run();
+		port = Integer.valueOf(args[0]);
+		new Server(port).run();
 	}
 
 	public Server(int port) {

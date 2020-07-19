@@ -19,6 +19,7 @@ public class LoginFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField userNameTextField;
 	private JTextField passwordTextField;
+	private JTextField portTextField;
 
 	public JTextField getUsername() {
 		return userNameTextField;
@@ -69,15 +70,24 @@ public class LoginFrame extends JFrame {
 		passwordTextField.setBounds(192, 118, 130, 26);
 		contentPane.add(passwordTextField);
 		
+		JLabel lblPort = new JLabel("Port");
+		lblPort.setBounds(83, 163, 130, 26);
+		contentPane.add(lblPort);
+		
+		portTextField = new JTextField();
+		portTextField.setBounds(192, 161, 130, 26);
+		portTextField.setColumns(10);
+		contentPane.add(portTextField);
+		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(138, 177, 117, 29);
+		btnLogin.setBounds(138, 200, 117, 29);
 		contentPane.add(btnLogin);
 		
 		btnLogin.addActionListener((ActionListener) new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String[] args = new String[] { userNameTextField.getText(), passwordTextField.getText() };
+				String[] args = new String[] { userNameTextField.getText(), passwordTextField.getText(), portTextField.getText() };
 				ChatRoom.main(args);
 				
 			}
