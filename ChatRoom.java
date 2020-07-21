@@ -7,10 +7,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class ChatRoom extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -68,12 +70,24 @@ public class ChatRoom extends JFrame {
 		contentPane.add(btnSend);
 		
 		JButton btnDirectMessage = new JButton("DM");
-		btnDirectMessage.setBounds(356, 72, 86, 21);
+		btnDirectMessage.setBounds(356, 28, 86, 21);
 		contentPane.add(btnDirectMessage);
 		
 		JButton btnLeaveRoom = new JButton("Leave Room");
 		btnLeaveRoom.setBounds(325, 245, 117, 29);
 		contentPane.add(btnLeaveRoom);
+		
+		textField = new JTextField();
+		textField.setBounds(364, 103, 61, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnStartServer = new JButton("Start");
+		btnStartServer.setBounds(356, 131, 86, 29);
+		contentPane.add(btnStartServer);
+		
+		JLabel lblPort = new JLabel("Port");
+		lblPort.setBounds(376, 84, 36, 16);
+		contentPane.add(lblPort);
 	}
-
 }
