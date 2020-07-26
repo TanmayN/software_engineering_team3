@@ -1,0 +1,43 @@
+commit b9ef32141ec75c3c43d4919aa1ff633f540377f1
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Wed Jul 15 17:23:06 2020 -0700
+
+    Added design documents
+
+commit dbd09a7b3ef7777c4daf39f675deb9db3b51d305
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Wed Jul 15 10:47:08 2020 -0700
+
+    Tied the text areas and buttons in with the backend for ChatRoom.java
+
+commit 7a03aa37060cfb6280f859eb01964e7addfb104c
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Tue Jul 14 11:53:05 2020 -0700
+
+    Added ClientConnectionFalseTest()
+
+commit 56720b3883b5806e50079a0aade10bd4e7cf82ea
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Tue Jul 14 11:40:42 2020 -0700
+
+    Added 2 test cases: ServerStartTest and ClientConnectionTest
+
+commit 09aef96d0712e440c1bd0b54c7b852478b37b4dc
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Tue Jul 14 11:24:21 2020 -0700
+
+    Added chat code to it's own package called Team3ChatApp
+    
+    Started a new package called tests_chatApp to start on the tests
+
+commit e8f4d9d1331d6271e138c30a6d96da1591a5610e
+Author: Camila <mramosgarzon@paypal.com>
+Date:   Wed Jul 8 13:04:26 2020 -0700
+
+    the UIs
+
+commit 6265d6a24dd1713aaf82cdc8b32a3a259904ca27
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Sun Jul 5 18:25:11 2020 -0700
+
+    Added basic sockets chat client and server

@@ -1,0 +1,11 @@
+commit e8f4d9d1331d6271e138c30a6d96da1591a5610e
+Author: Camila <mramosgarzon@paypal.com>
+Date:   Wed Jul 8 13:04:26 2020 -0700
+
+    the UIs
+
+commit 6265d6a24dd1713aaf82cdc8b32a3a259904ca27
+Author: Tanmay Narang <tanmayn429@gmail.com>
+Date:   Sun Jul 5 18:25:11 2020 -0700
+
+    Added basic sockets chat client and server

@@ -1,3 +1,5 @@
+package Team3ChatApp;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

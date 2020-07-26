@@ -1,3 +1,5 @@
+package Team3ChatApp;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -5,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -14,7 +19,12 @@ public class LoginFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField userNameTextField;
 	private JTextField passwordTextField;
+	private JTextField portTextField;
 
+	public JTextField getUsername() {
+		return userNameTextField;
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -61,8 +71,21 @@ public class LoginFrame extends JFrame {
 		contentPane.add(passwordTextField);
 		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(138, 177, 117, 29);
+		btnLogin.setBounds(138, 200, 117, 29);
 		contentPane.add(btnLogin);
+		
+		btnLogin.addActionListener((ActionListener) new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String[] args = new String[] { userNameTextField.getText(), passwordTextField.getText() };
+				//ChatRoom.main(args);
+				JoinChatRoom.main(args);
+				
+			}
+			
+		}); 
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package sockets;
+package Team3ChatApp;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,12 +11,13 @@ import java.util.Scanner;
 
 public class Server {
 
-	private int port;
-	private List<PrintStream> clients;
+	private static int port;
+	public List<PrintStream> clients;
 	private ServerSocket server;
 
 	public static void main(String[] args) throws IOException {
-		new Server(1234).run();
+		port = Integer.valueOf(args[0]);
+		new Server(port).run();
 	}
 
 	public Server(int port) {
@@ -30,21 +31,22 @@ public class Server {
 				this.close();
 			}
 		};
-		System.out.println("Listening on port 1234");
+		System.out.println("Listening on port " + Integer.toString(port));
 
 		while (true) {
-			// accepts a new client
 			Socket client = server.accept();
 			System.out.println("Connection established with client: " + client.getInetAddress().getHostAddress());
 			
-			// add client message to list
 			this.clients.add(new PrintStream(client.getOutputStream()));
 			
-			// create a new thread for client handling
 			new Thread(new ClientHandler(this, client.getInputStream())).start();
 		}
 	}
 
+	public List<PrintStream> getClients() {
+		return this.clients;
+	}
+	
 	void broadcastMessages(String msg) {
 		for (PrintStream client : this.clients) {
 			client.println(msg);
@@ -66,11 +68,19 @@ class ClientHandler implements Runnable {
 	public void run() {
 		String message;
 		
-		// when there is a new message, broadcast to all
 		Scanner sc = new Scanner(this.client);
 		while (sc.hasNextLine()) {
 			message = sc.nextLine();
-			server.broadcastMessages(message);
+			
+			if (message.contains("/users")) {
+				System.out.println("Message /users: " + message);
+				for (PrintStream client : server.clients) {
+					server.broadcastMessages(client.toString());
+				}
+			} else {
+				System.out.println("Message normal: " + message);
+				server.broadcastMessages(message);
+			}
 		}
 		sc.close();
 	}
