@@ -1,5 +1,9 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,16 +12,27 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
-public class JoinChatRoom extends JFrame {
+public class JoinChatRoom extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private HashMap<String, Integer> chatRoomsInfo = new HashMap<String, Integer>();
 	private static final String CHATROOM_INFO_FILE = "chatrooms.txt";
+	private JPanel chatRoomPanel;
+	private JRadioButton[] radios;
+	private ButtonGroup group;
+	private String chatRoomSelected;
 
 	/**
 	 * Launch the application.
@@ -71,24 +86,40 @@ public class JoinChatRoom extends JFrame {
 		lblAvailableChatrooms.setBounds(103, 20, 136, 16);
 		contentPane.add(lblAvailableChatrooms);
 		
-		JTextArea chatRoomsTextArea = new JTextArea();
-		chatRoomsTextArea.setBounds(18, 48, 301, 199);
 		
-		// add char room details from the map to the text area here.
-		String info = "";
-		for (String room : chatRoomsInfo.keySet()) {
-			info = info + room + " : " + chatRoomsInfo.get(room);
-			info = info + "\n";
-		}
-		chatRoomsTextArea.setText(info);
-		
-		
-		contentPane.add(chatRoomsTextArea);
 		
 		JButton btnNewButton = new JButton("Join");
 		btnNewButton.setBounds(327, 129, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		chatRoomPanel = new JPanel(new GridLayout(0, 1));
+		chatRoomPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		chatRoomPanel.setBounds(31, 48, 265, 203);
+		contentPane.add(chatRoomPanel);
+		
+
+		radios = new JRadioButton[chatRoomsInfo.size()];
+		//Group the radio buttons.
+		group = new ButtonGroup();
+		int index = 0;
+		for (String roomName : chatRoomsInfo.keySet()) {
+			radios[index] =  new JRadioButton(roomName + ":" + chatRoomsInfo.get(roomName));
+			radios[index].setActionCommand(roomName + ":" + chatRoomsInfo.get(roomName));
+
+			radios[index].addActionListener(this);
+			group.add(radios[index]);
+
+			chatRoomPanel.add(radios[index]);
+			
+			index++;
+		}
+
+		chatRoomPanel.validate();
 	}
 	
-	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getActionCommand());
+		chatRoomSelected  = e.getActionCommand();
+	}
 }
