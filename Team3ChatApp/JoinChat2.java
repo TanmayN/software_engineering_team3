@@ -1,5 +1,3 @@
-package Team3ChatApp;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.IOException;
@@ -16,9 +14,6 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 public class JoinChatRoom extends JFrame {
-	
-	private static String username;
-	private static String password;
 
 	private JPanel contentPane;
 	private HashMap<String, Integer> chatRoomsInfo = new HashMap<String, Integer>();
@@ -28,8 +23,6 @@ public class JoinChatRoom extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		username = args[0];
-		password = args[1];
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
